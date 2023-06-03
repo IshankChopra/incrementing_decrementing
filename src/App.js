@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [number, setNumber] = useState(0);
+
+  const increment = () => {
+    setNumber(number + 1);
+  };
+
+  const decrement = () => {
+    if (number > 0) {
+      setNumber(number - 1);
+    } else {
+      setNumber(0);
+      alert("Sorry, Zero Limit Reached");
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h2
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        INC/DCR
+      </h2>
+      <div className="main_div">
+        <div className="center_div">
+          <h1>{number}</h1>
+          <div className="btn_div">
+            <button onClick={increment}>Increment</button>
+
+            <button onClick={decrement}>Decrement</button>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
